@@ -1,11 +1,10 @@
-import type { NextPage } from 'next'
+import { NextPage } from 'next';
 import Head from 'next/head'
 import { PostCard, Categories, PostWidget } from '../components/';
+import { getPosts } from '../services';
 
-const posts = [
-  { title: 'React Testing', excerpt: 'Learn React Testing' },
-  { title: 'React with Tailwind', excerpt: 'Learn React with Tailwind' },
-];
+
+
 
 
 const Home: NextPage = () => {
@@ -25,8 +24,8 @@ const Home: NextPage = () => {
 
         <div className='lg:col-span-4 col-span-1'>
           <div className='lg:sticky relative top-8'>
-            <PostWidget/>
-            <Categories/>
+            <PostWidget />
+            <Categories />
           </div>
         </div>
       </div>
@@ -36,4 +35,11 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+//fetch data outside of the component (from Next.js)
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: { posts } //fetch data
+  }
+}
