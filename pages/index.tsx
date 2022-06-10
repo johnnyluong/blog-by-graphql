@@ -7,7 +7,7 @@ import { getPosts } from '../services';
 
 
 
-const Home: NextPage = () => {
+const Home: NextPage = ({posts}) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
 
         <div className='lg:col-span-8 col-span-1'>
-          {posts.map((post) => <PostCard post={post} key={post.title} />)}
+          {posts.map((post) => <PostCard post={post.node} key={post.title} />)}
         </div>
 
 
@@ -34,6 +34,9 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
+export default Home
+
 
 //fetch data outside of the component (from Next.js)
 export async function getStaticProps() {

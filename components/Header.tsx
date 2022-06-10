@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
-
+import React, { useContext,useState, useEffect } from 'react'
 import Link from 'next/link';
-
-
-const categories = [{ name: 'React', slug: 'react'}, { name: 'Web Development', slug: 'web-dev'}];
-
+import { getCategories } from '../services';
 
 const Header = () => {
+    const [categories, setCategories] = useState([])
+
+    //the arrow function is the callback function
+    //the array in the second arg is the dependency array
+    //this only runs at the start to fill in categories
+    useEffect(() => {
+        getCategories().then((newCategories) => setCategories(newCategories))
+    }, []);
+
     return (
         // margin auto padding 10 
         <div className='container mx-auto px-10 mb-8'>
@@ -15,7 +20,7 @@ const Header = () => {
                 <div className='md:float-left block'>
                     <Link href='/'>
                         <span className='cursor-pointer font-bold text-4xl text-white'>
-                            Web Development
+                            johnny's blog
                         </span>
                     </Link>
                 </div>
