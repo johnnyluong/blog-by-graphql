@@ -3,6 +3,9 @@ import Image from 'next/image';
 import moment from 'moment'; //gets the time
 import Link from 'next/link';
 
+import { grpahCMSImageLoader } from '../util';
+
+
 const Postcard = ({ post }: { post: any }) => {
     return (
         <div className='bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
@@ -18,18 +21,16 @@ const Postcard = ({ post }: { post: any }) => {
             </h1>
             {/* segment for author and date */}
             <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
-                <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 items-center">
-                    {/* author image */}
+                <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 ">
                     <Image
                         unoptimized
-                        // loader={grpahImageLoader}
+                        loader={grpahCMSImageLoader}
                         alt={post.author.name}
                         height="30px"
                         width="30px"
                         className="align-middle rounded-full"
                         src={post.author.photo.url}
                     />
-                    {/* author name */}
                     <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">{post.author.name}</p>
                 </div>
                 <div className="font-medium text-gray-700">

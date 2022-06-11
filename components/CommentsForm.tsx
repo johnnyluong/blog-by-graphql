@@ -5,10 +5,10 @@ const CommentsForm = ({ slug }: { slug: any }) => {
     const [error, setError] = useState(false);
     const [localStorage, setLocalStorage] = useState(null);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const commentEl = useRef();
-    const nameEl = useRef();
-    const emailEl = useRef();
-    const storeDataEl = useRef(); //dont need to keep values in state sincewe need to just pull them from inputs and send them to graphCMS
+    const commentEl = useRef<any>();
+    const nameEl = useRef<any>();
+    const emailEl = useRef<any>();
+    const storeDataEl = useRef<any>(); //dont need to keep values in state sincewe need to just pull them from inputs and send them to graphCMS
 
     useEffect(() => {
         nameEl.current.value = window.localStorage.getItem('name');

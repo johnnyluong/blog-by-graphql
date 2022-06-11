@@ -9,10 +9,10 @@ import { getPosts, getPostDetails } from '../../services'
 
 import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components'
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ post }: { post: any }) => {
     const router = useRouter();
 
-    if(router.isFallback){
+    if (router.isFallback) {
         //handles if data is still being loaded
         return <Loader />
     }
@@ -29,7 +29,7 @@ const PostDetails = ({ post }) => {
                 </div>
                 <div className='col-span-1 lg:col-span-4'>
                     <div className='relative lg:sticky top-8'>
-                        <PostWidget slug={post.slug} categories={post.categories.map((category) => category.slug)} />
+                        <PostWidget slug={post.slug} categories={post.categories.map((category: any) => category.slug)} />
                         <Categories />
                     </div>
                 </div>
@@ -42,7 +42,7 @@ export default PostDetails
 
 
 //we pass in a slug for a sepcific post and it makes a graphql query to find that specific post and returns the data on that post
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: any }) {
     //async function defined in services
     const data = await getPostDetails(params.slug);
 
@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 
     return {
         //using the array of posts we obtained, we extract all of the slugs which are all the possible params for getStaticProps above
-        paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+        paths: posts.map(({ node: { slug } }: { node: { slug: any } }) => ({ params: { slug } })),
         fallback: true,
     }
 
