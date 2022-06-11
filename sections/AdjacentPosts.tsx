@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { AdjacentPostCard } from '../components';
 import { getAdjacentPosts } from '../services';
 
-const AdjacentPosts = ({ createdAt, slug }) => {
-  const [adjacentPost, setAdjacentPost] = useState(null);
+const AdjacentPosts = ({ createdAt, slug }: {createdAt: any, slug: any}) => {
+  const [adjacentPost, setAdjacentPost] = useState<any>(null);
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
-    getAdjacentPosts(createdAt, slug).then((result) => {
+    getAdjacentPosts(createdAt, slug).then((result: any) => {
       setAdjacentPost(result);
       setDataLoaded(true);
     });
