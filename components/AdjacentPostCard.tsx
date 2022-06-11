@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 
-const AdjacentPostCard = ({ post, position }) => (
+const AdjacentPostCard = ({ post, position }: { post: any, position: any }) => (
   <>
     <div className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72" style={{ backgroundImage: `url('${post.featuredImage.url}')` }} />
     <div className="absolute rounded-lg bg-center bg-gradient-to-b opacity-50 from-gray-400 via-gray-700 to-black w-full h-72" />

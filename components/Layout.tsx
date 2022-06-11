@@ -3,11 +3,11 @@ import { Header } from './'
 
 // This is a wrapper to add the header to every page when it is rendered 
 // -> used in _app.tsx with the children being whatever components we pass in
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: any }) => {
   return (
     <>
-        <Header />
-        {children}
+      <Header />
+      {children}
     </>
   )
 }
