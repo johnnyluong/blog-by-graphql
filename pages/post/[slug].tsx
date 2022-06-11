@@ -4,11 +4,19 @@
 //this file [slug].tsx it the template for all of the post pages - the brackets make the file dynamic
 
 import React from 'react'
+import { useRouter } from 'next/router' //used to maintain connection to graphcms when we deploy the site and make changes to the data
 import { getPosts, getPostDetails } from '../../services'
 
-import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm } from '../../components'
+import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components'
 
 const PostDetails = ({ post }) => {
+    const router = useRouter();
+
+    if(router.isFallback){
+        //handles if data is still being loaded
+        return <Loader />
+    }
+
 
     return (
         <div className='container mx-auto px-10 mb-8'>
@@ -52,7 +60,7 @@ export async function getStaticPaths() {
     return {
         //using the array of posts we obtained, we extract all of the slugs which are all the possible params for getStaticProps above
         paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-        fallback: false,
+        fallback: true,
     }
 
 }
