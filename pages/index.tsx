@@ -12,7 +12,7 @@ const Home = ({posts}: {posts: any}) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
-        <title>Johnny's Tech Blog</title>
+        <title>fullstack.dev</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FeaturedPosts />
