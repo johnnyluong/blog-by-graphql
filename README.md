@@ -24,4 +24,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 This project is meant to serve as a template for a personal or informational blog powered by modern web technologies.
 The tech stack was selected to optimize for SEO and load speeds.
-Next.js enables server side rendering which improves SEO and load times.
+Next.js enables server side rendering which improves SEO and load times whereas GraphQL enables a flexible API endpoint to GraphCMS
